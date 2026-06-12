@@ -1,0 +1,57 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function appRoot() {
+      return /databases/$(database)/documents/zerowaste/app;
+    }
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userRole() {
+      return get(/databases/$(database)/documents/zerowaste/app/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return signedIn() && userRole() == 'admin';
+    }
+
+    function isCharity() {
+      return signedIn() && userRole() == 'charity';
+    }
+
+    function isOwner(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    match /zerowaste/{appDocument} {
+      allow read: if signedIn();
+      allow create, update: if signedIn();
+
+      match /users/{userId} {
+        allow create: if isOwner(userId);
+        allow read: if signedIn();
+        allow update: if isOwner(userId) || isAdmin();
+        allow delete: if isAdmin();
+      }
+
+      match /donations/{donationId} {
+        allow create: if signedIn()
+          && request.resource.data.donorId == request.auth.uid;
+        allow read: if signedIn();
+        allow update: if isAdmin()
+          || resource.data.donorId == request.auth.uid
+          || isCharity();
+        allow delete: if isAdmin() || resource.data.donorId == request.auth.uid;
+      }
+
+      match /notifications/{notificationId} {
+        allow create: if signedIn();
+        allow read, update, delete: if signedIn()
+          && resource.data.userId == request.auth.uid;
+      }
+    }
+  }
+}

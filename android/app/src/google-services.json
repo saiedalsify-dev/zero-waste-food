@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "159490487756",
+    "project_id": "zerowaste-food",
+    "storage_bucket": "zerowaste-food.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159490487756:android:b863980156d3297ca39969",
+        "android_client_info": {
+          "package_name": "com.zerowastefood.zero_waste_food"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-vrtF8wGRScdrQMvLs9SihHABzXNdg0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
