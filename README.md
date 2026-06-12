@@ -75,15 +75,6 @@ For real Firebase backend:
 
 The app intentionally falls back to demo services while `firebase_options.dart` still contains placeholder values.
 
-## Demo Accounts
-
-When Firebase is not configured, use these demo accounts:
-
-```text
-donor@zerowaste.test    password123
-charity@zerowaste.test  password123
-admin@zerowaste.test    password123
-```
 
 ## Run The Project
 
