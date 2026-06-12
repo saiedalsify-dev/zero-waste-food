@@ -125,3 +125,12 @@ No machine learning, AI APIs, or external NLP libraries are used.
 4. Notifications through Firebase Cloud Messaging.
 5. Rule-based chatbot.
 6. Google Maps later as a separate phase.
+
+
+## Screenshots
+
+![Screen1](screenshots/Screenshot%202026-05-07%20095600.png)
+
+![Screen2](screenshots/Screenshot%202026-05-07%20095619.png)
+
+![Screen3](screenshots/Screenshot%202026-05-07%20095638.png)
